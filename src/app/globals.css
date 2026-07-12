@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --sand: #eee3cf;
+  --paper: #fbf7ee;
+  --ink: #25231f;
+  --muted: #766f63;
+  --line: #25231f;
+  --moss: #6f8f63;
+  --clay: #c96f45;
+  --tide: #6aa7a7;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--sand); }
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background:
+    repeating-linear-gradient(7deg, rgba(37,35,31,.07) 0 2px, transparent 2px 26px),
+    radial-gradient(circle at 20% 12%, rgba(111,143,99,.18), transparent 28%),
+    var(--sand);
+}
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .65; }
+
+.pebble-shell { width: min(1180px, 100%); margin: 0 auto; padding: 14px; }
+.pebble-hero { display: grid; grid-template-columns: 1fr 190px; gap: 10px; margin-bottom: 10px; }
+.hero-mark, .hero-count, .drop-panel, .pebble-card, .lookup, .about {
+  border: 2px solid var(--line);
+  background: rgba(251,247,238,.96);
+  box-shadow: 0 8px 0 rgba(37,35,31,.18);
+  border-radius: 8px;
+}
+.hero-mark { min-height: 126px; display: flex; align-items: center; gap: 16px; padding: 18px; }
+.hero-mark svg { width: 52px; height: 52px; color: var(--clay); }
+.hero-mark p, .hero-count span, .panel-head p, .drop-panel label span, .stone-copy p, .pebble-card footer span, .lookup span {
+  margin: 0; text-transform: uppercase; letter-spacing: .12em; color: var(--muted);
+  font: 900 12px var(--font-geist-mono), monospace;
+}
+.hero-mark h1 { margin: 4px 0 0; font-size: clamp(42px, 6.8vw, 84px); line-height: .86; font-weight: 950; letter-spacing: 0; }
+.hero-count { display: grid; place-items: center; text-align: center; padding: 14px; background: #e2d2b8; }
+.hero-count strong { font-size: 54px; line-height: .88; color: var(--clay); }
+
+.path-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 10px; align-items: start; }
+.drop-panel { padding: 16px; }
+.panel-head { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.panel-head svg { width: 30px; height: 30px; color: var(--moss); }
+.panel-head strong { display: block; margin-top: 4px; overflow-wrap: anywhere; }
+.preset-row { display: grid; gap: 8px; margin-bottom: 12px; }
+.preset-row button {
+  min-height: 42px; border: 2px solid var(--line); border-radius: 999px; background: #fffaf1;
+  padding: 8px 12px; text-align: left; font-weight: 950;
+}
+.drop-panel label { display: block; margin-top: 12px; }
+.drop-panel label span { display: block; margin-bottom: 6px; }
+.drop-panel input, .drop-panel textarea, .lookup input {
+  width: 100%; border: 2px solid var(--line); border-radius: 8px; background: #fffaf1; color: var(--ink);
+  padding: 12px; outline: none;
+}
+.drop-panel textarea { min-height: 120px; resize: vertical; line-height: 1.35; }
+.color-row, .weight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.color-row button, .weight-row button {
+  min-height: 44px; border: 2px solid var(--line); border-radius: 999px; background: #fffaf1; font-weight: 950;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.color-row button span { width: 22px; height: 22px; border: 2px solid var(--line); border-radius: 999px; background: var(--swatch); }
+.color-row button.active { background: var(--swatch); color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,.35); }
+.weight-row button.active { background: var(--moss); color: #fff; }
+.weight-row svg { width: 16px; height: 16px; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.connect, .disconnect, .drop {
+  min-height: 50px; border: 2px solid var(--line); border-radius: 999px; display: inline-flex;
+  align-items: center; justify-content: center; gap: 8px; font-weight: 950;
+}
+.connect { background: var(--ink); color: #fff; }
+.disconnect { background: #fffaf1; color: var(--ink); overflow-wrap: anywhere; }
+.drop { background: var(--clay); color: #fff; }
+.message { margin: 12px 0 0; min-height: 42px; color: #4f493f; font-weight: 850; line-height: 1.25; }
+
+.path-panel { display: grid; gap: 10px; }
+.pebble-card {
+  position: relative; min-height: 640px; overflow: hidden; padding: 22px;
+  background: linear-gradient(180deg, #faf3e4, #e8dbc6);
+}
+.rake-lines { position: absolute; inset: 28px; display: grid; gap: 28px; opacity: .45; }
+.rake-lines span { border-top: 2px solid rgba(37,35,31,.28); border-radius: 999px; }
+.stone {
+  position: relative; z-index: 1; width: 245px; height: 205px; margin-left: auto; border: 3px solid var(--line);
+  border-radius: 58% 42% 48% 52% / 48% 58% 42% 52%; display: grid; place-items: center;
+  background: var(--pebble-color); color: #fff; box-shadow: inset -18px -20px 0 rgba(0,0,0,.16), 0 14px 0 rgba(37,35,31,.18);
+}
+.stone svg { width: 52px; height: 52px; }
+.stone strong { border: 2px solid rgba(255,255,255,.8); border-radius: 999px; padding: 5px 10px; font: 950 14px var(--font-geist-mono), monospace; text-transform: uppercase; }
+.stone-copy { position: relative; z-index: 1; margin-top: -68px; max-width: 760px; }
+.stone-copy h2 { margin: 8px 0 0; font-size: clamp(58px, 8vw, 108px); line-height: .82; font-weight: 950; letter-spacing: 0; }
+.stone-copy blockquote {
+  margin: 20px 0 0; padding: 18px; border-left: 9px solid var(--moss); background: rgba(255,250,241,.88);
+  border-radius: 0 8px 8px 0; font-size: clamp(24px, 3vw, 36px); font-weight: 900; line-height: 1.12;
+}
+.pebble-card footer { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.pebble-card footer div { min-height: 90px; border: 2px solid var(--line); border-radius: 8px; background: #fffaf1; padding: 12px; }
+.pebble-card footer strong { display: block; margin-top: 8px; overflow-wrap: anywhere; }
+.lookup, .about { padding: 16px; }
+.lookup > div, .about { display: flex; gap: 12px; align-items: flex-start; }
+.lookup h2 { margin: 0; font-size: 22px; }
+.lookup svg, .about svg { width: 24px; height: 24px; color: var(--clay); }
+.about strong { font-size: 21px; line-height: 1.12; }
+
+@media (max-width: 860px) {
+  .pebble-shell { padding: 10px; }
+  .pebble-hero, .path-grid { grid-template-columns: 1fr; }
+  .hero-mark { min-height: 104px; }
+  .hero-mark h1 { font-size: 42px; }
+  .hero-count { grid-template-columns: 1fr 1fr 1fr; min-height: 70px; }
+  .pebble-card { min-height: 560px; padding: 18px; }
+  .stone { width: 172px; height: 145px; }
+  .stone-copy { margin-top: -34px; }
+  .stone-copy h2 { font-size: 56px; }
+  .actions { grid-template-columns: 1fr; }
+}
